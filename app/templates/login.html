@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Billables{% endblock %}
+
+{% block content %}
+    <h2>Login to Your Account</h2>
+
+    {% if error %}
+        <p style="color: red; font-weight: bold;">{{ error }}</p>
+    {% endif %}
+    
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div>
+            <label>Username:</label><br>
+            <input type="text" name="username" required>
+        </div>
+        <br>
+        <div>
+            <label>Password:</label><br>
+            <input type="password" name="password" required>
+        </div>
+        <br>
+        <button type="submit">Sign In</button>
+    </form>
+{% endblock %}
+

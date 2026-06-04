@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Entries - Billables{% endblock %}
+
+{% block content %}
+    <h2>Your logged hours</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Hours</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                <td>{{ entry.start }}</td> <td>{{ entry.end }}</td>   <td>{{ entry.comment }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="3">You haven't logged any hours yet.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Log billable hours</h2>
+
+    {% if error %}
+        <p style="color: red; font-weight: bold;">{{ error }}</p>
+    {% endif %}
+    
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div>
+            <label>Comment:</label><br>
+            <input type="text" name="comment" required>
+        </div>
+        <br>
+        <div>
+            <label>Start:</label><br>
+            <input type="datetime-local" name="start" required>
+        </div>
+        <br>
+        <div>
+            <label>End:</label><br>
+            <input type="datetime-local" name="end" required>
+        </div>
+
+        <br>
+
+        <button type="submit">Log hours</button>
+    </form>
+{% endblock %}
+
+

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard - Billables{% endblock %}
+
+{% block content %}
+    <h2>Administrative Overview</h2>
+    <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%; text-align: left;">
+        <thead>
+            <tr style="background-color: #eee;">
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Account Type</th>
+                <th>Aggregated Tracked Hours</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+                <tr>
+                    <td>{{ u.id }}</td>
+                    <td><strong>{{ u.username }}</strong></td>
+                    <td>
+                        {% if u.is_admin %}
+                            <span style="color: blue; font-weight: bold;">Administrator</span>
+                        {% else %}
+                            <span>Standard Worker</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ u.total_hours }} hrs</td>
+                    <td>
+                            <form method="POST" action="" style="margin: 0;">
+                                {% csrf_token %}
+                                <input type="hidden" name="delete_user_id" value="{{ u.id }}">
+                                <button type="submit" style="background-color: #ff4d4d; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px;">
+                                    Wipe All Entries
+                                </button>
+                            </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
