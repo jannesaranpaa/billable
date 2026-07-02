@@ -102,8 +102,8 @@ many, that we shouldn't try to write an escaper ourselves. Instead, we should
 rely on well known and vetted solutions, which are frequently verified by
 experts.
 
-![Flaw 3 - Image showcasing results of the flaw, and what the same attack
-results to with both of the fixes](/screenshots/flaw-3.png)
+![Flaw 3 - Image showcasing results of the flaw](/screenshots/flaw-3-before.png)
+![Flaw 3 - Image showcasing results of the fix](/screenshots/flaw-3-after.png)
 
 FLAW 4:
 [https://github.com/jannesaranpaa/billable/blob/c1e2492bf099064c75e9780552713ccd74948fe4/app/views.py#L122](https://github.com/jannesaranpaa/billable/blob/c1e2492bf099064c75e9780552713ccd74948fe4/app/views.py#L122)
@@ -132,6 +132,9 @@ but we are still in the admin panel.
 panel](/screenshots/flaw-4-before.png)
 ![Flaw 4 - After the fix the user is redirected to
 login](/screenshots/flaw-4-after.png)
+![Flaw 4 - Network requests after the flaw - a](/screenshots/flaw-4-response_a.png)
+![Flaw 4 - Network requests after the flaw - b](/screenshots/flaw-4-response_b.png)
+![Flaw 4 - Server terminal output](/screenshots/flaw-4-after-server.png)
 
 FLAW 5:
 [https://github.com/jannesaranpaa/billable/blob/c1e2492bf099064c75e9780552713ccd74948fe4/app/views.py#L133](https://github.com/jannesaranpaa/billable/blob/c1e2492bf099064c75e9780552713ccd74948fe4/app/views.py#L133)
